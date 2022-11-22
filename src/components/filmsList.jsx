@@ -1,43 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './filmsList.css';
 
-export default class FilmsList extends Component  {
+function FilmsList (props){
 
-constructor (props){
-    super(props);
+    const [list, setList] = useState([]);
 
-    this.state = {
-        list: []
-    }
-
-    this.getFilms = this.getFilms.bind(this);
-}
-
-
-
-getFilms = async function(){
+async function getFilms (){
     try{
         let res = await fetch('https://ghibliapi.herokuapp.com/films');
-        let resJson = await res.json();
-        this.setState(this.state.list = resJson);
+        let films = await res.json();
+        setList(films);
     } catch (e){
         console.error(e);
     }
 }
 
-componentDidMount(){
-    this.getFilms();
-}
+useEffect(() => {
+    getFilms();
+}, []);
 
-    render(){
+    
         return (
         <ul>
-            {this.state.list.map((ele) => {
+            {list.map((ele) => {
                return <li key={ele.id}><h2>{ele.title}</h2> <br /> <img src={ele.image} alt="Movie Poster" className="filmsList-img" /> <br /> <span className='light-text'><i>{ele.description}</i></span> </li>  
             })};
             
         </ul>
-        );
-    };
-   
+        ); 
 }
+export default FilmsList;
