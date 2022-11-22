@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      list: ["ready", "set", "go"],
+      list: [],
       text: ""
     }
 
@@ -25,7 +25,8 @@ this.setState({list: [...this.state.list, this.state.text]})
   render(){
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <h1>Get to know <span className="subtle">Ghibli Studios</span></h1>
+      <h3>Enter your favorites below to make a list:</h3>
       <form onSubmit={this.onSubmit}>
       <input
             type="text"
