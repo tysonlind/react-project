@@ -1,0 +1,16 @@
+.filmsList-img {
+    height: 20vh;
+    box-shadow: 5px 5px 15px rgba(0,0,0, 0.5);
+    margin-bottom: 20px;
+}
+body {
+    color:white;
+    background-color:#212121;
+}
+h2 {
+    text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.9);
+    margin-block-end: 0.2em;
+}
+.light-text {
+    opacity: 0.6;
+}

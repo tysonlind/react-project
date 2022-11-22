@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './filmsList.css';
 
 export default class FilmsList extends Component  {
 
@@ -32,8 +33,9 @@ componentDidMount(){
         return (
         <ul>
             {this.state.list.map((ele) => {
-               return <li key={ele.id}>{ele.title} <br /> {ele.description}</li>
+               return <li key={ele.id}><h2>{ele.title}</h2> <br /> <img src={ele.image} alt="Movie Poster" className="filmsList-img" /> <br /> <span className='light-text'><i>{ele.description}</i></span> </li>  
             })};
+            
         </ul>
         );
     };
