@@ -7,7 +7,7 @@
  */
 
 export function filterFilmsByDirector(list, searchDirector){
-    return list.filter(item => item.director == searchDirector);
+    return list.filter(item => item.director === searchDirector);
 }
 
 /**
@@ -18,5 +18,44 @@ export function filterFilmsByDirector(list, searchDirector){
  */
 
 export function getListOf(list, prop){
-    return [...new Set(list.map((film) => film[prop] || ""))];
+    return [...new Set(list.map((film) => film[prop]))];
+}
+
+
+/**
+ * 
+ * @param {Object} list returns film stats
+ * @returns 
+ */
+
+export function getFilmStats(list){
+const arr = [...list];
+    if (arr.length <= 0){
+        return {
+            sum: 0,
+            avg_score: 0,
+            total: 0,
+            latest: 1600
+        }
+    }
+
+
+    const sum = arr.reduce((a, c) => {
+        return a + c.rt_score
+, 0    });
+
+const avg_score = sum / arr.length;
+const total = arr.length;
+
+const latest = arr.sort((a, b) => {
+    return a.release_date - b.release_date
+})[0];
+
+return {
+    sum,
+    avg_score,
+    total,
+    latest: latest.release_date
+}
+
 }

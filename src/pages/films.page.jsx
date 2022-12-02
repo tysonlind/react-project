@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../components/filmsList.css';
-import { filterFilmsByDirector } from '../helpers/film.helpers.js';
-import { getListOf } from '../helpers/film.helpers.js';
+import { filterFilmsByDirector, getListOf, getFilmStats } from '../helpers/film.helpers.js';
+import { Link } from 'react-router-dom';
 
 export default function FilmsPage (props){
 
@@ -10,7 +10,7 @@ export default function FilmsPage (props){
 
 async function getFilms (){
     try{
-        let res = await fetch('https://ghibliapi.herokuapp.com/films');
+        let res = await fetch('https://ghibliapi.herokuapp.com/films', { mode: 'no-cors' });
         let films = await res.json();
         setList(films);
     } catch (e){
@@ -18,6 +18,8 @@ async function getFilms (){
     }
 }
 
+
+//pseudo componentDidMount because of the empty dependency array
 useEffect(() => {
     getFilms();
 }, []);
@@ -27,9 +29,10 @@ function onSubmit(event){
     event.preventDefault();
     }
     
-
+    //Derived states
    const filmsByDirector = filterFilmsByDirector(list,searchDirector);
    const directors = getListOf(list, "director");
+   const {avg_score, total, latest} = getFilmStats(list);
 
 
         return (
@@ -50,12 +53,26 @@ function onSubmit(event){
                     })}
                     </select>
       </form>
+      <div>
+  <div>
+    <span># Of Films</span>
+    <span>{total}</span>
+  </div>
+  <div>
+    <span>Average Rating</span>
+    <span>{avg_score.toFixed(2)}</span>
+  </div>
+  <div>
+    <span>Latest Film</span>
+    <span>{latest}</span>
+  </div>
+</div>
                 <ul>
                     {filmsByDirector.length > 0 ?
                     filmsByDirector.map((ele) => {
                         return (
                         <li key={ele.id}>
-                            <h2>{ele.title}</h2> <br />
+                            <h2><Link to={`film/${ele.id}`}>{ele.title}</Link></h2> <br />
                             <img src={ele.image} alt="Movie Poster" className="filmsList-img" /> <br /> 
                             <span className='light-text'><i>{ele.description}</i></span> </li>
                         )

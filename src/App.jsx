@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import './App.css';
 import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/home.page.jsx";
-import FilmsPage from "./pages/films.page.jsx";
+import {HomePage, FilmsPage, SingleFilmPage } from './pages/index.js';
 
 function App (props){
 
@@ -19,8 +17,9 @@ function App (props){
       </ul>
     </nav>
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/films" element={<FilmsPage />}></Route>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/films" element={<FilmsPage />} />
+        <Route path="films/film/:id" element={<SingleFilmPage />} />
       </Routes>
     </BrowserRouter>
   );
