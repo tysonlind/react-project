@@ -41,8 +41,7 @@ const arr = [...list];
 
 
     const sum = arr.reduce((a, c) => {
-        return a + c.rt_score
-, 0    });
+        return a + c.rt_score}, 0 );
 
 const avg_score = sum / arr.length;
 const total = arr.length;
