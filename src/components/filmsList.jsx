@@ -7,7 +7,7 @@ function FilmsList (props){
 
 async function getFilms (){
     try{
-        let res = await fetch('https://ghibliapi.herokuapp.com/films');
+        let res = await fetch('https://ghibliapi.herokuapp.com/films', {mode: 'no-cors'});
         let films = await res.json();
         setList(films);
     } catch (e){
