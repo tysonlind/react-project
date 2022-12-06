@@ -37,9 +37,9 @@ function onSubmit(event){
 
         return (
         <>
-            <h1>Studio Ghibli Films</h1><div>
+            <span className="center"><h1>Studio Ghibli Films by Director</h1></span><div>
             <form className="form-group" onSubmit={onSubmit}>
-                <label htmlFor="searchDirector">Select a director:</label>
+                <label htmlFor="searchDirector">Select a director: </label>
                  <select
                     name="searchDirector"
                     id="searchDirector"
