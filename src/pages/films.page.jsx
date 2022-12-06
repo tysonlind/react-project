@@ -10,7 +10,7 @@ export default function FilmsPage (props){
 
 async function getFilms (){
     try{
-        let res = await fetch('https://ghibliapi.herokuapp.com/films', { mode: 'no-cors' });
+        let res = await fetch('https://studioghibliapi-d6fc8.web.app/films/');
         let films = await res.json();
         setList(films);
     } catch (e){
@@ -55,15 +55,15 @@ function onSubmit(event){
       </form>
       <div>
   <div>
-    <span># Of Films</span>
+    <span># Of Films: </span>
     <span>{total}</span>
   </div>
   <div>
-    <span>Average Rating</span>
+    <span>Average Rating: </span>
     <span>{avg_score.toFixed(2)}</span>
   </div>
   <div>
-    <span>Latest Film</span>
+    <span>Latest Film: </span>
     <span>{latest}</span>
   </div>
 </div>
@@ -81,7 +81,7 @@ function onSubmit(event){
                     list.map((ele) => {
                         return (
                             <li key={ele.id}>
-                                <h2>{ele.title}</h2> <br />
+                                <h2><Link to={`film/${ele.id}`}>{ele.title}</Link></h2> <br />
                                 <img src={ele.image} alt="Movie Poster" className="filmsList-img" /> <br /> 
                                 <span className='light-text'><i>{ele.description}</i></span> </li>
                             )})

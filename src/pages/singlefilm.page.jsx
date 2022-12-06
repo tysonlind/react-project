@@ -7,7 +7,7 @@ export default function SingleFilmPage() {
     const { id } = useParams();
 
         function getFilm(){
-            fetch(`https://ghibliapi.herokuapp.com/films/${id}`, {mode:'no-cors'})
+            fetch(`https://studioghibliapi-d6fc8.web.app/films/${id}`)
             .then((res) => res.json())
             .then((res) => {
                 setItem(res);
