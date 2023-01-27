@@ -6,6 +6,7 @@ function App (props){
 
   return (
     <BrowserRouter>
+    <div className="d-flex justify-content-center align-items-center">
     <nav>
       <ul>
         <li>
@@ -16,6 +17,7 @@ function App (props){
         </li>
       </ul>
     </nav>
+    </div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/films" element={<FilmsPage />} />

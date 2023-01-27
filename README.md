@@ -1,3 +1,11 @@
+# Screenshots of the application
+The main director filtering page
+![studio_ghibli_app_1](https://user-images.githubusercontent.com/23481564/214981362-e3bc7eae-529a-4401-8f3c-6d0ec92d898e.PNG)
+
+Single films page
+![studio_ghibli_app_2](https://user-images.githubusercontent.com/23481564/214981418-e5a3c128-bee5-44ea-8fe9-40d7f59b6241.PNG)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
