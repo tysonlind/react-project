@@ -5,7 +5,6 @@ export default function HomePage (props){
 
   const [list, setList] = useState([""]);
   const [text,setText] = useState([""]);
-
 function onSubmit(event){
 event.preventDefault();
 setList([...list, text]);
@@ -20,6 +19,7 @@ setList([...list, text]);
             type="text"
             value={text}
             onChange={(event) => {
+              console.log(event);
               setText(event.target.value);
             }} />
             <button type="submit">Add</button>

@@ -51,9 +51,9 @@ const latest = arr.sort((a, b) => {
 })[0];
 
 return {
-    sum,
-    avg_score,
-    total,
+    sum: sum,
+    avg_score: avg_score,
+    total: total,
     latest: latest.release_date
 }
 

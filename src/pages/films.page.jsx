@@ -32,7 +32,7 @@ function onSubmit(event){
     //Derived states
    const filmsByDirector = filterFilmsByDirector(list,searchDirector);
    const directors = getListOf(list, "director");
-   const {avg_score, total, latest} = getFilmStats(list);
+   const {avg_score, total, latest} = getFilmStats(filmsByDirector);
 
 
         return (
